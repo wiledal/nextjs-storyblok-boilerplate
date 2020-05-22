@@ -1,6 +1,6 @@
 # React Storyblok Boilerplate
 
-Install with `npx degit https://github.com/your-majesty/react-storyblok-boilerplate your-project-name`
+Install with `npx degit https://github.com/wiledal/react-storyblok-boilerplate your-project-name`
 
 Assumes you have set up Storyblok in this structure:
 ```
@@ -22,4 +22,4 @@ Assumes you have set up Storyblok in this structure:
 etc...
 ```
 
-Run with `npx next`
+Run with `npx next --port YOUR_PORT`

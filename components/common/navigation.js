@@ -13,7 +13,24 @@ export default function Navigation(props) {
           <a>Test link</a>
         </Link>
       </div>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 72px;
+          background: #fff;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        a:not(:last-child) {
+          margin-right: 32px;
+        }
+      `}</style>
     </>
   );
 }

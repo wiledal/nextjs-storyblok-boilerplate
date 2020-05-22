@@ -23,3 +23,5 @@ etc...
 ```
 
 Run with `npx next --port YOUR_PORT`
+
+Replace the token in the `contstants/site-settings.js` with your Storyblok Token.

@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 const TeaserModule = dynamic(() => import("../modules/teaser-module"));
 
 export function createModule(module, key) {
-  console.log(module);
   if (module.component == "teaser") {
     return <TeaserModule {...module} key={key} />;
   }

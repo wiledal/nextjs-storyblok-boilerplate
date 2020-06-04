@@ -2,6 +2,7 @@ import DefaultLayout from "../components/layouts/default-layout";
 import ModuleFactory from "../components/common/module-factory";
 import fetchStoryblokPage from "../utils/fetch-storyblok-page";
 import fetchStoryblokSettings from "../utils/fetch-storyblok-settings";
+import { isStoryblokInEditor } from "../lib/storyblok";
 
 export default function Index({ page, settings }) {
   return (
@@ -24,8 +25,9 @@ export async function getServerSideProps(ctx) {
   let page = null;
   let settings = null;
   let resp = null;
+  let inEditor = isStoryblokInEditor(ctx.query);
 
-  let version = ctx.query._storyblok ? "draft" : null;
+  let version = inEditor ? "draft" : null;
 
   [err, resp] = await fetchStoryblokSettings(lang, version);
   if (err) {

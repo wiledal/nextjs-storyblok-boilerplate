@@ -1,10 +1,6 @@
 import storyblok from "../lib/storyblok";
+import fetchStoryblokStory from "./fetch-storyblok-page";
 
 export default async function fetchStoryblokSettings(lang, version) {
-  return storyblok
-    .get("cdn/stories/" + lang + "/settings", {
-      version,
-    })
-    .then((res) => [null, res])
-    .catch((err) => [err, null]);
+  return fetchStoryblokStory(lang, "settings", version);
 }

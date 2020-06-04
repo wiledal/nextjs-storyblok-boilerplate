@@ -1,6 +1,6 @@
 import storyblok from "../lib/storyblok";
 
-export default async function fetchStoryblokPage(lang, slug, version) {
+export default async function fetchStoryblokStory(lang, slug, version) {
   return storyblok
     .get("cdn/stories/" + lang + "/" + slug, {
       version,

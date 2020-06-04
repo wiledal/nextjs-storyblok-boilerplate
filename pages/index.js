@@ -1,6 +1,6 @@
 import DefaultLayout from "../components/layouts/default-layout";
 import ModuleFactory from "../components/common/module-factory";
-import fetchStoryblokPage from "../utils/fetch-storyblok-page";
+import fetchStoryblokStory from "../utils/fetch-storyblok-page";
 import fetchStoryblokSettings from "../utils/fetch-storyblok-settings";
 import { isStoryblokInEditor } from "../lib/storyblok";
 
@@ -37,7 +37,7 @@ export async function getServerSideProps(ctx) {
     settings = resp.data.story;
   }
 
-  [err, resp] = await fetchStoryblokPage(lang, slug, version);
+  [err, resp] = await fetchStoryblokStory(lang, slug, version);
   if (err) {
     ctx.res.statusCode = 404;
   } else {

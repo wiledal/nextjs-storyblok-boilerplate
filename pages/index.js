@@ -16,7 +16,7 @@ export default function Index(props) {
     <>
       <Layout {...props}>
         {content && (
-          <SbEditable content={content}>
+          <SbEditable content={content} key={content?._uid}>
             <div className="page">
               <ModuleDelegator modules={content?.body} />
             </div>

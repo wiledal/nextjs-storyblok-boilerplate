@@ -22,7 +22,7 @@ export default function LoadingSpinner({ show }) {
           background: #fff;
           z-index: 200;
 
-          transition: opacity 0.5s ease;
+          transition: opacity 0.3s ease;
           pointer-events: none;
         }
         .spinner {

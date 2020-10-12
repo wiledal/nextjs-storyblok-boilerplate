@@ -1,34 +1,26 @@
 import { useState, useEffect, useRef } from "react";
 
-import Link from "./link";
-
-export default function Navigation(props) {
+export default function Navigation({ page, preview }) {
   return (
     <>
-      <div className="nav">
-        <Link to="/en">
-          <a>Home</a>
-        </Link>
-        <Link to="/en/resellers/reseller-1">
-          <a>Test link</a>
-        </Link>
+      <div className="navigation">
+        <div className="content">Next.js + Storyblok boilerplate</div>
       </div>
+
       <style jsx>{`
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
+        .navigation {
+          position: relative;
           width: 100%;
-          height: 72px;
+          height: 48px;
           background: #fff;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+          z-index: 100;
         }
-
-        a:not(:last-child) {
-          margin-right: 32px;
+        .content {
+          margin: 0 3%;
+          height: 100%;
+          display: flex;
+          align-items: center;
         }
       `}</style>
     </>

@@ -1,27 +1,29 @@
-# React Storyblok Boilerplate
+# Storyblok + NextJS + Vercel boilerplate
 
-Install with `npx degit https://github.com/wiledal/nextjs-storyblok-boilerplate your-project-name`
+A small boilerplate to kickstart a Storyblok + NextJS project.
 
-Assumes you have set up Storyblok in this structure:
-```
-- en/
-|- settings (story; settings)
-|- landing (story; page)
-|- blog/
-  |- blog-post-1 (story; blog-post)
-  |- blog-post-2 (story; blog-post)
-|- some-folder/
-  |- nested-page-1 (story; page)
+### Features
+  - Static first
+  - Realtime Storyblok content editing out of the box
+  - Preview mode, with in-site indicator (always preview on localhost)
+  - Small `ModuleDelegator` for a modern, quick way of adding page modules with little keystrokes
+  - Using `hofs` for composable static prop fetching
 
-- de/
-|- settings (story; settings)
-|- landing (story; page)
-|- blog/
-  |- blog-post-1 (story; blog-post)
+### Install:
 
-etc...
+1, initiate a project:
+```sh
+npx degit wiledal/nextjs-storyblok-boilerplate your-project-name
+cd your-project-name
+yarn
 ```
 
-Run with `npx next --port YOUR_PORT`
+2, add your Storyblok preview token in `constants/content-constants.js`
 
-Replace the token in the `contstants/site-settings.js` with your Storyblok Token.
+3, run with
+```
+yarn next --port PORT
+```
+
+### Caveats:
+  - Preview mode does not work on `localhost` (https://github.com/vercel/next.js/issues/11356)

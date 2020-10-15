@@ -21,7 +21,7 @@ yarn
 2, add your Storyblok preview token in `constants/content-constants.js`
 
 3, run with
-```
+```sh
 yarn next --port PORT
 ```
 

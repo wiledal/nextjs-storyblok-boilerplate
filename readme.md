@@ -27,3 +27,4 @@ yarn next --port PORT
 
 ### Caveats:
   - Preview mode does not work on `localhost` (https://github.com/vercel/next.js/issues/11356)
+  - 404 errors use a `noindex` meta-header rather than providing a correct status code (https://github.com/vercel/next.js/discussions/10960)

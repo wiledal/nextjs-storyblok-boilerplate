@@ -1,6 +1,6 @@
-# Storyblok + NextJS boilerplate
+# Storyblok + Next.js boilerplate
 
-A small boilerplate to kickstart a Storyblok + NextJS project.
+A small boilerplate to kickstart a Storyblok + Next.js project.
 
 ### Features
   - Static first

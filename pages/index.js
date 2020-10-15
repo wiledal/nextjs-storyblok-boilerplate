@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import { withDefaultProps } from "../hofs/with-default-props";
 import { useRouter } from "next/router";
 import LoadingSpinner from "../components/common/loading-spinner";
+import Error from "../components/common/error";
 
 export default function Index(props) {
   let { preview, page, settings } = props;
@@ -22,6 +23,7 @@ export default function Index(props) {
             </div>
           </SbEditable>
         )}
+        {!content && <Error />}
       </Layout>
 
       <LoadingSpinner show={router.isFallback} />

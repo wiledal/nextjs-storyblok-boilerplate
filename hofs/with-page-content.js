@@ -4,7 +4,7 @@ export function withPageContent(getProps) {
 
     let { params, preview } = ctx;
 
-    let page = {};
+    let page = null;
     let storyblok = (await import("../lib/storyblok")).default;
 
     let slug = params?.slug || "home";
@@ -12,7 +12,11 @@ export function withPageContent(getProps) {
     try {
       let resp = await storyblok.get("cdn/stories/" + slug, {}, preview);
       page = resp?.data?.story?.content || {};
-    } catch (err) {}
+    } catch (err) {
+      data.props.error = {
+        statusCode: 404,
+      };
+    }
 
     data.props.page = page;
 

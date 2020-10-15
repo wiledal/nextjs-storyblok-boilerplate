@@ -3,7 +3,9 @@ import Navigation from "./common/navigation";
 import PreviewIndicator from "./common/preview-indicator";
 import StoryblokBridge from "./common/storyblok-bridge";
 
-export default function Layout({ children, page, preview, settings }) {
+import Head from "next/head";
+
+export default function Layout({ children, page, error, preview, settings }) {
   return (
     <>
       <GlobalStyles />

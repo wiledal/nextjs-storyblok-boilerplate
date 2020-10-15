@@ -32,7 +32,7 @@ export default function LoadingSpinner({ show }) {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          border: 2px solid #00ff8e;
+          border: 2px solid #005bff;
           border-left: 2px solid transparent;
 
           margin-top: -20px;

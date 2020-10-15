@@ -1,4 +1,4 @@
-# Storyblok + NextJS + Vercel boilerplate
+# Storyblok + NextJS boilerplate
 
 A small boilerplate to kickstart a Storyblok + NextJS project.
 

@@ -1,50 +1,38 @@
-import DefaultLayout from "../components/layouts/default-layout";
-import ModuleFactory from "../components/common/module-factory";
-import fetchStoryblokStory from "../utils/fetch-storyblok-page";
-import fetchStoryblokSettings from "../utils/fetch-storyblok-settings";
-import { isStoryblokInEditor } from "../lib/storyblok";
+import ModuleDelegator from "../components/common/module-delegator";
+import useEditableContent from "../hooks/use-editable-content";
+import SbEditable from "storyblok-react";
+import Layout from "../components/layout";
+import { withDefaultProps } from "../hofs/with-default-props";
+import { useRouter } from "next/router";
+import LoadingSpinner from "../components/common/loading-spinner";
+import Error from "../components/common/error";
 
-export default function Index({ page, settings }) {
+export default function Index(props) {
+  let { preview, page, settings } = props;
+
+  let content = useEditableContent(page);
+  let router = useRouter();
+
   return (
     <>
-      <DefaultLayout settings={settings} page={page}>
-        {page && page.content.component == "page" && (
-          <ModuleFactory settings={settings} modules={page.content.body} />
+      <Layout {...props}>
+        {content && (
+          <SbEditable content={content} key={content?._uid}>
+            <div className="page">
+              <ModuleDelegator modules={content?.body} />
+            </div>
+          </SbEditable>
         )}
-        {/* {!page && <ErrorPage settings={settings} />} */}
-      </DefaultLayout>
+        {!content && <Error />}
+      </Layout>
+
+      <LoadingSpinner show={router.isFallback} />
     </>
   );
 }
 
-export async function getServerSideProps(ctx) {
-  let lang = ctx.query.lang || "en";
-  let slug = ctx.query.slug ? ctx.query.slug.join("/") : "/";
-
-  let err = null;
-  let page = null;
-  let settings = null;
-  let resp = null;
-  let inEditor = isStoryblokInEditor(ctx.query);
-
-  let version = inEditor ? "draft" : null;
-
-  [err, resp] = await fetchStoryblokSettings(lang, version);
-  if (err) {
-    console.log("⚠️ COULD NOT FETCH SETTINGS!");
-    console.log(err);
-  } else {
-    settings = resp.data.story;
-  }
-
-  [err, resp] = await fetchStoryblokStory(lang, slug, version);
-  if (err) {
-    ctx.res.statusCode = 404;
-  } else {
-    page = resp.data.story;
-  }
-
+export const getStaticProps = withDefaultProps((ctx) => {
   return {
-    props: { page, settings },
+    props: {},
   };
-}
+});

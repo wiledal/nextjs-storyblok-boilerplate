@@ -1,22 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import SbEditable from "storyblok-react";
-
-export default function TeaserModule(props) {
-  const { headline } = props;
+export default function TeaserModule(module) {
   return (
     <>
-      <SbEditable content={props}>
-        <div className="teaser-module">{headline}</div>
-      </SbEditable>
+      <div className="teaser">
+        <p>{module.headline}</p>
+      </div>
 
       <style jsx>{`
-        .teaser-module {
-          background: #ebebeb;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 400px;
+        .teaser {
+          padding: 80px 3%;
+          width: 100%;
           font-size: 40px;
+          color: white;
+          background: linear-gradient(to bottom, #005bff, blue);
         }
       `}</style>
     </>

@@ -5,7 +5,14 @@ import StoryblokBridge from "./common/storyblok-bridge";
 
 import Head from "next/head";
 
-export default function Layout({ children, page, error, preview, settings }) {
+export default function Layout({
+  children,
+  page,
+  error,
+  devMode,
+  preview,
+  settings,
+}) {
   return (
     <>
       <GlobalStyles />
@@ -16,8 +23,7 @@ export default function Layout({ children, page, error, preview, settings }) {
 
       {preview && (
         <>
-          <StoryblokBridge />
-          <PreviewIndicator />
+          <PreviewIndicator dev={devMode} />
         </>
       )}
     </>

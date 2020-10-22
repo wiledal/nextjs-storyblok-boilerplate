@@ -26,5 +26,9 @@ yarn next --port PORT
 ```
 
 ### Caveats:
-  - Preview mode does not work on `localhost` (https://github.com/vercel/next.js/issues/11356)
+  - Forcing preview mode on localhost, this is not "true" preview, but enables live editing for easier development
   - 404 errors use a `noindex` meta-header rather than providing a correct status code (https://github.com/vercel/next.js/discussions/10960)
+
+# Ideas
+- Storyblok base template script  
+  A one-time script that adds the basic outline of the Storyblok content using the Content Management API

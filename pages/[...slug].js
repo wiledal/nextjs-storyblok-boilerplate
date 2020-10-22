@@ -10,7 +10,7 @@ import Error from "../components/common/error";
 export default function AnySlug(props) {
   let { preview, page, settings } = props;
 
-  let content = useEditableContent(page);
+  let content = useEditableContent(page, preview);
   let router = useRouter();
 
   return (

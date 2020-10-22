@@ -34,6 +34,7 @@ export default function AnySlug(props) {
 export const getStaticProps = withDefaultProps((ctx) => {
   return {
     props: {},
+    revalidate: 60,
   };
 });
 

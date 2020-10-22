@@ -1,10 +1,14 @@
-export default function PreviewIndicator() {
+export default function PreviewIndicator({ dev }) {
   return (
     <>
-      <a href="/api/preview/exit" className="preview-indicator">
-        🕶 Preview mode
-        <span className="hover">EXIT</span>
-      </a>
+      {!dev ? (
+        <a href="/api/preview/exit" className="preview-indicator">
+          🕶 Preview
+          <span className="hover">EXIT</span>
+        </a>
+      ) : (
+        <div className="preview-indicator">🔧 development</div>
+      )}
 
       <style jsx>{`
         .preview-indicator {
@@ -21,8 +25,6 @@ export default function PreviewIndicator() {
           letter-spacing: 1px;
           text-decoration: none;
           overflow: hidden;
-
-          cursor: pointer;
         }
         .hover {
           position: absolute;

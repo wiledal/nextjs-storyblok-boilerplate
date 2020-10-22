@@ -10,7 +10,7 @@ import Error from "../components/common/error";
 export default function AnySlug(props) {
   let { preview, page, settings } = props;
 
-  let content = useEditableContent(page);
+  let content = useEditableContent(page, preview);
   let router = useRouter();
 
   return (
@@ -34,6 +34,7 @@ export default function AnySlug(props) {
 export const getStaticProps = withDefaultProps((ctx) => {
   return {
     props: {},
+    revalidate: 60,
   };
 });
 

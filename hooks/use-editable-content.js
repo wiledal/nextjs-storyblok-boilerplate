@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import contentConstants from "../constants/content-constants";
 
-const useEditableContent = (content) => {
+const useEditableContent = (content, preview) => {
   const [pageContent, setPageContent] = useState(content);
+  const [hasStoryblokBridge, setHasStoryblokBridge] = useState(false);
   const router = useRouter();
 
   const handleSetPageContent = (newContent) => {
@@ -34,14 +35,22 @@ const useEditableContent = (content) => {
       });
 
       window.storyblok.on("input", (event) => {
-        console.log(event);
         if (event.story.content._uid === pageContent._uid) {
           window.storyblok.addComments(event.story.content, event.story.id);
           handleSetPageContent(event.story.content);
         }
       });
     }
-  }, [router.reload]);
+
+    if (preview && !hasStoryblokBridge) {
+      let script = document.createElement("script");
+      script.src = `//app.storyblok.com/f/storyblok-latest.js?t=${contentConstants.storyblokToken}`;
+      document.body.appendChild(script);
+      script.onload = () => {
+        setHasStoryblokBridge(true);
+      };
+    }
+  }, [hasStoryblokBridge, content]);
 
   return pageContent;
 };

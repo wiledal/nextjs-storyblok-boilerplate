@@ -3,11 +3,11 @@ export default function PreviewIndicator({ dev }) {
     <>
       {!dev ? (
         <a href="/api/preview/exit" className="preview-indicator">
-          🕶 Preview mode
+          🕶 Preview
           <span className="hover">EXIT</span>
         </a>
       ) : (
-        <div className="preview-indicator">dev mode</div>
+        <div className="preview-indicator">🔧 development</div>
       )}
 
       <style jsx>{`
